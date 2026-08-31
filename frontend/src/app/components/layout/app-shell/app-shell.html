@@ -1,0 +1,106 @@
+<div class="min-h-screen bg-background text-foreground">
+  <header
+    class="lg:hidden sticky top-0 z-40 flex items-center justify-between border-b border-border bg-card/80 backdrop-blur px-4 h-14"
+  >
+    <div class="font-bold">AptiSphere</div>
+    <button
+      (click)="toggleMenu()"
+      class="grid place-items-center h-10 w-10 rounded-lg hover:bg-muted"
+    >
+      <svg [lucideIcon]="icons.Menu" class="h-5 w-5"></svg>
+    </button>
+  </header>
+
+  <div class="flex">
+    <aside
+      [class]="
+        'fixed inset-y-0 left-0 z-50 w-72 bg-sidebar border-r border-sidebar-border flex flex-col transition-transform lg:translate-x-0 lg:static lg:w-64 ' +
+        (isOpen() ? 'translate-x-0' : '-translate-x-full')
+      "
+    >
+      <div class="h-16 flex items-center justify-between px-5 border-b border-sidebar-border">
+        <div class="font-bold">AptiSphere</div>
+        <button
+          (click)="toggleMenu()"
+          class="lg:hidden grid place-items-center h-9 w-9 rounded-lg hover:bg-sidebar-accent"
+        >
+          <svg [lucideIcon]="icons.X" class="h-4 w-4"></svg>
+        </button>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1">
+        <div
+          class="px-2 pt-2 pb-1 text-[10px] uppercase tracking-wider font-semibold text-muted-foreground"
+        >
+          @if (role() === 'admin') {
+            Administration
+          } @else {
+            Workspace
+          }
+        </div>
+
+        @for (item of currentNav; track item.to) {
+          <a
+            [routerLink]="item.to"
+            routerLinkActive="bg-primary text-primary-foreground shadow-soft"
+            [routerLinkActiveOptions]="{ exact: item.to === '/dashboard' || item.to === '/admin' }"
+            class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors text-sidebar-foreground hover:bg-sidebar-accent"
+          >
+            <svg [lucideIcon]="item.icon" class="h-4 w-4 shrink-0"></svg>
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      </nav>
+
+      <div class="p-3 border-t border-sidebar-border space-y-2">
+        <button
+          (click)="switchRole()"
+          class="w-full flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium bg-primary-soft text-primary hover:opacity-90 transition"
+        >
+          <svg [lucideIcon]="icons.ShieldCheck" class="h-3.5 w-3.5"></svg>
+          Switch to
+          @if (role() === 'admin') {
+            Candidate
+          } @else {
+            Admin
+          }
+          mode
+        </button>
+
+        <div class="flex items-center gap-3 px-2 py-2">
+          <div
+            class="grid place-items-center h-9 w-9 rounded-full bg-primary text-primary-foreground text-sm font-semibold"
+          >
+            U
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="text-sm font-medium truncate">Guest User</div>
+          </div>
+          <button (click)="toggleTheme()" class="p-2 hover:bg-muted rounded-md">
+            @if (isDark()) {
+              <svg [lucideIcon]="icons.Sun" class="h-4 w-4"></svg>
+            } @else {
+              <svg [lucideIcon]="icons.Moon" class="h-4 w-4"></svg>
+            }
+          </button>
+          <button (click)="handleLogout()" class="p-2 hover:bg-muted rounded-md">
+            <svg [lucideIcon]="icons.LogOut" class="h-4 w-4"></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    @if (isOpen()) {
+      <div
+        class="lg:hidden fixed inset-0 z-40 bg-foreground/40 backdrop-blur-sm"
+        (click)="toggleMenu()"
+      ></div>
+    }
+
+    <main class="flex-1 min-w-0">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>

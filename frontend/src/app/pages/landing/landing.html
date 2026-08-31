@@ -1,0 +1,273 @@
+<div class="min-h-screen bg-background text-foreground">
+  <header class="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="font-bold font-display text-xl tracking-tight text-primary">AptiSphere</div>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+        <a href="#features" class="hover:text-foreground transition">Features</a>
+        <a href="#how" class="hover:text-foreground transition">How it works</a>
+        <a href="#testimonials" class="hover:text-foreground transition">Reviews</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a
+          routerLink="/login"
+          class="text-sm font-medium px-4 py-2 rounded-md hover:bg-muted transition"
+          >Sign in</a
+        >
+        <a
+          routerLink="/register"
+          class="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 shadow-soft transition"
+          >Get started</a
+        >
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative overflow-hidden">
+      <div
+        class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,oklch(0.95_0.08_265/0.5),transparent_60%),radial-gradient(circle_at_80%_0%,oklch(0.95_0.06_200/0.5),transparent_50%)]"
+      ></div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24 lg:pt-24 lg:pb-32">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div
+              class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground mb-6"
+            >
+              <svg [lucideIcon]="icons.Sparkles" class="h-3.5 w-3.5 text-primary"></svg>
+              Trusted by 50,000+ aspirants
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
+              Master aptitude. <span class="text-primary">Crack any exam.</span>
+            </h1>
+            <p class="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
+              AptiSphere is the modern online assessment platform built for students and job
+              seekers. Practice mock tests, simulate real exams, and improve with section-wise
+              analytics.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <a
+                routerLink="/register"
+                class="flex items-center justify-center gap-1 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium shadow-soft hover:bg-primary/90 transition text-center"
+              >
+                Start practicing free
+                <svg [lucideIcon]="icons.ArrowRight" class="h-4 w-4"></svg>
+              </a>
+              <a
+                routerLink="/login"
+                class="flex items-center justify-center border border-input bg-background px-6 py-3 rounded-lg font-medium hover:bg-accent hover:text-accent-foreground transition text-center"
+              >
+                Browse mock tests
+              </a>
+            </div>
+
+            <div class="mt-8 grid grid-cols-3 gap-6 max-w-md">
+              <div>
+                <div class="text-2xl font-bold font-display">500+</div>
+                <div class="text-xs text-muted-foreground mt-1">Mock tests</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold font-display">20k+</div>
+                <div class="text-xs text-muted-foreground mt-1">Questions</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold font-display">4.8★</div>
+                <div class="text-xs text-muted-foreground mt-1">Avg. rating</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/30 rounded-3xl blur-2xl -z-10"
+            ></div>
+            <div class="rounded-2xl border border-border bg-card shadow-elevated overflow-hidden">
+              <div
+                class="border-b border-border px-5 py-3 flex items-center justify-between bg-muted/40"
+              >
+                <div class="flex items-center gap-2 text-xs font-medium">
+                  <svg [lucideIcon]="icons.Clock" class="h-3.5 w-3.5 text-primary"></svg>
+                  <span class="font-mono tabular-nums">42:17</span>
+                  <span class="text-muted-foreground">left</span>
+                </div>
+                <div class="text-xs text-muted-foreground">Question 12 / 30</div>
+              </div>
+              <div class="p-6">
+                <div class="text-xs font-medium text-primary mb-3">Quantitative Aptitude</div>
+                <p class="text-base font-medium leading-relaxed">
+                  A train travels 240 km in 4 hours. If it accelerates uniformly, what is its
+                  average speed?
+                </p>
+                <div class="mt-5 space-y-2">
+                  @for (opt of mockOptions; track opt; let idx = $index) {
+                    <div
+                      [class]="
+                        'flex items-center gap-3 rounded-lg border px-4 py-3 text-sm transition ' +
+                        (idx === 1
+                          ? 'border-primary bg-primary-soft text-foreground'
+                          : 'border-border bg-background')
+                      "
+                    >
+                      <span
+                        [class]="
+                          'grid place-items-center h-5 w-5 rounded-full border text-[10px] font-semibold ' +
+                          (idx === 1
+                            ? 'border-primary bg-primary text-primary-foreground'
+                            : 'border-border')
+                        "
+                      >
+                        {{ getOptionChar(idx) }}
+                      </span>
+                      <span>{{ opt }}</span>
+                    </div>
+                  }
+                </div>
+              </div>
+              <div class="px-6 py-4 border-t border-border bg-muted/40 grid grid-cols-6 gap-1.5">
+                @for (blank of questionGrid; track $index; let idx = $index) {
+                  <div
+                    [class]="
+                      'h-7 rounded-md text-[10px] font-semibold grid place-items-center ' +
+                      (idx < 11
+                        ? 'bg-success text-success-foreground'
+                        : idx === 11
+                          ? 'bg-primary text-primary-foreground ring-2 ring-primary/30'
+                          : idx === 13 || idx === 15
+                            ? 'bg-warning text-warning-foreground'
+                            : 'bg-background border border-border text-muted-foreground')
+                    "
+                  >
+                    {{ idx + 1 }}
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-20 lg:py-28 bg-muted/30 border-y border-border">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <div class="text-xs uppercase tracking-wider font-semibold text-primary mb-3">
+            Why AptiSphere
+          </div>
+          <h2 class="text-3xl lg:text-4xl font-bold tracking-tight">
+            Everything you need to ace your next assessment
+          </h2>
+          <p class="mt-4 text-muted-foreground">
+            Realistic exam interface, detailed analytics, and a question bank curated by experts —
+            all in one place.
+          </p>
+        </div>
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          @for (f of features; track f.title) {
+            <div
+              class="rounded-2xl border border-border bg-card p-6 shadow-soft hover:shadow-elevated transition"
+            >
+              <div
+                class="grid h-11 w-11 place-items-center rounded-xl bg-primary-soft text-primary mb-5"
+              >
+                <svg [lucideIcon]="f.icon" class="h-5 w-5"></svg>
+              </div>
+              <h3 class="font-semibold text-lg">{{ f.title }}</h3>
+              <p class="mt-2 text-sm text-muted-foreground leading-relaxed">{{ f.desc }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl lg:text-4xl font-bold tracking-tight">How it works</h2>
+          <p class="mt-4 text-muted-foreground">
+            Get started in minutes. From signup to your first mock test in under 60 seconds.
+          </p>
+        </div>
+        <div class="mt-14 grid md:grid-cols-3 gap-6">
+          @for (s of steps; track s.title; let idx = $index) {
+            <div class="relative rounded-2xl border border-border bg-card p-6">
+              <div class="text-5xl font-display font-bold text-primary/15 absolute top-4 right-5">
+                0{{ idx + 1 }}
+              </div>
+              <svg [lucideIcon]="s.icon" class="h-6 w-6 text-primary mb-4"></svg>
+              <h3 class="font-semibold text-lg">{{ s.title }}</h3>
+              <p class="mt-2 text-sm text-muted-foreground">{{ s.desc }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="py-20 lg:py-28 bg-muted/30 border-y border-border">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-center">Loved by learners</h2>
+        <div class="mt-12 grid md:grid-cols-3 gap-5">
+          @for (t of testimonials; track t.name) {
+            <figure class="rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <div class="flex gap-0.5 text-warning mb-4">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                  <svg [lucideIcon]="icons.Star" class="h-4 w-4 fill-current"></svg>
+                }
+              </div>
+              <blockquote class="text-sm leading-relaxed text-foreground">
+                "{{ t.quote }}"
+              </blockquote>
+              <figcaption class="mt-5 flex items-center gap-3">
+                <div
+                  class="h-9 w-9 rounded-full bg-primary text-primary-foreground grid place-items-center text-sm font-semibold"
+                >
+                  {{ t.name[0] }}
+                </div>
+                <div>
+                  <div class="text-sm font-semibold">{{ t.name }}</div>
+                  <div class="text-xs text-muted-foreground">{{ t.role }}</div>
+                </div>
+              </figcaption>
+            </figure>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-28">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="rounded-3xl bg-primary text-primary-foreground p-10 lg:p-16 text-center shadow-elevated relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,oklch(1_0_0/0.12),transparent_50%)]"
+          ></div>
+          <h2 class="relative text-3xl lg:text-4xl font-bold tracking-tight">
+            Ready to start your prep journey?
+          </h2>
+          <p class="relative mt-4 text-primary-foreground/80 max-w-xl mx-auto">
+            Join thousands of candidates improving their scores every week with AptiSphere.
+          </p>
+          <div class="relative mt-8">
+            <a
+              routerLink="/register"
+              class="inline-flex items-center gap-1 bg-card text-foreground px-6 py-3 rounded-lg font-medium hover:bg-card/90 shadow-soft transition"
+            >
+              Create your free account
+              <svg [lucideIcon]="icons.ArrowRight" class="h-4 w-4"></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border py-10">
+    <div
+      class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+    >
+      <div class="font-bold font-display text-lg tracking-tight text-primary">AptiSphere</div>
+      <p class="text-xs text-muted-foreground">
+        © {{ currentYear }} AptiSphere. Built for modern assessments.
+      </p>
+    </div>
+  </footer>
+</div>

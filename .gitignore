@@ -1,0 +1,69 @@
+# ==========================================
+# Operating System & Global Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.log
+
+# ==========================================
+# IDEs and Editors
+# ==========================================
+.idea/
+*.iml
+*.iws
+.classpath
+.project
+.settings/
+# Uncomment the line below if you don't want to share .vscode configurations
+# .vscode/
+
+# ==========================================
+# Environment Variables & Secrets
+# ==========================================
+.env
+.env.*
+!.env.example
+application-secret.properties
+application-secret.yml
+
+# ==========================================
+# Backend: Spring Boot / Maven (api/)
+# ==========================================
+api/target/
+api/logs/
+*.class
+
+# Ignore packaged archives
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven Wrapper exceptions (keep properties, ignore downloaded jar)
+!api/.mvn/wrapper/maven-wrapper.properties
+api/.mvn/wrapper/maven-wrapper.jar
+
+# ==========================================
+# Frontend: Angular / Node (frontend/)
+# ==========================================
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/coverage/
+frontend/out-tsc/
+frontend/tmp/
+frontend/.tsbuildinfo
+
+# Node package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
